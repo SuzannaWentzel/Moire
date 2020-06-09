@@ -1,56 +1,81 @@
-let canvas = document.getElementById('moire');
-let ctx = canvas.getContext('2d');
-let canvasWidth = canvas.width;
-let canvasHeight = canvas.height; 
+// === VARIABLES ==========================================================
 
-let offX = 300;
-let offY = 300;
-
-let requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-
-// for (let center = 0; center < 3; center++) {
-//     for (let radius = 1; radius < 200; radius ++) {
-//         let calculatedRadius = Math.pow(1.05, radius);
-//         console.log(calculatedRadius);
-//         ctx.beginPath();
-//         ctx.arc(offX, offY, calculatedRadius, 0, 2*Math.PI);
-//         ctx.stroke();
-//     }
-
-//     offX = offX + 300;    
-// }
-
+// time variable
 let t = 0;
 
-function drawCircles() {
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    ctx.lineWidth = 5;
+// animation parameters
+let numberOfLines = 500;
 
-    for (let r = 1; r < 200; r++) {
-        ctx.beginPath();
-        ctx.strokeStyle = '#ff00ff';
-        ctx.arc(offX, offY, 10*r, 0, Math.PI * 2); // or Math.pow(1.02, r)
-        ctx.closePath();
-        ctx.stroke();
+// function 1
+let ZOOMX = 500;
+let ZOOMY = 500;
+let R = 1.0;
+let r = 7.0/12.0;
+let d = r/2.0;
 
-        ctx.beginPath();
-        ctx.strokeStyle = '#00ffff';
-        ctx.arc(1200-offX, offY, 10*r, 0, Math.PI *2);
-        ctx.closePath();
-        ctx.stroke();
+// function 2
+let ZOOMX2 = 500;
+let ZOOMY2 = 500;
+let R2 = 2;
+let r2 = 0.9;
+let d2 = r2/R2;
 
-        ctx.beginPath();
-        ctx.strokeStyle = '#ffff00';
-        ctx.arc(600, 600-offY, 10*r, 0, Math.PI *2);
-        ctx.closePath();
-        ctx.stroke();
-    }
+// color variables
+let k = 0;
+let INTERVAL_PER_LINE = 0.75;
 
-    offX = 600 + 600 * Math.cos(t);
-    offY = 300 + 300 * Math.sin(t);
-    t += Math.PI / 600;
 
-    requestAnimationFrame(drawCircles);
+
+// === INITIALIZING P5 =====================================================
+
+function setup() {
+    createCanvas(1920, 1080);
 }
 
-drawCircles();
+function draw() {
+    background(0);
+    
+    colorMode(HSB, 360);
+
+    strokeWeight(2);
+    
+    translate(width/2, height/2);
+    
+    for(let i = 0; i <numberOfLines; i++ ){
+        stroke(getColor(i), 360, i * 250/numberOfLines);
+        line (x1(0.05*(i+t)), y1(0.05*(i+t)), x2(0.015*(t+i)), y2(0.015*(t+i)));
+    }
+    t += 1;
+    k = (k + INTERVAL_PER_LINE) % 360;
+}
+
+
+// === HELPER FUNCTIONS =========================================================
+function getColor(i) {
+    let c = k - ((numberOfLines - i) * INTERVAL_PER_LINE);
+    if (c < 0) {
+        c += 360;
+    }
+    if (c < -360) {
+        c += 2*360;
+    }
+    return (int) (c % 360);
+}
+
+// hypotrochoid 1
+function x1(t) {
+    return ZOOMX * ((R-r) * cos (t) + d * cos (((R-r)/r) * t));
+}
+
+function y1(t) {
+    return ZOOMY * ((R-r) * sin (t) - d * sin (((R-r)/r) * t));
+}
+
+// hypotrochoid 2
+function x2(t) {
+    return ZOOMX * ((R2-r2) * cos(t) + d2 * cos(((R2-r2)/r2) * t));
+}
+
+function y2(t) {
+    return ZOOMY * ((R2-r2) * sin(t) - d2 * sin(((R2-r2)/r2) * t));
+}
