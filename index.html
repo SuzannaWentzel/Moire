@@ -1,12 +1,134 @@
 <!DOCTYPE html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-    <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Math drawings</title>
+    <title>Math Drawings</title>
 </head>
 <body>
-    <script src="main.js"></script>
+    <div id="navbar" class="sticky">
+        <a href="javascript:scrollToId('line-drawings')">Line Drawings</a>
+        <a href="#">Examples</a>
+        <a href="javascript:scrollToId('how-it-works')">How it Works</a>
+    </div>
+    <div class="content">
+        <div class="parallax banner">
+            <div class="header">
+                <h1>Line Drawings</h1>
+                <h2>Course: Art, Mathematics and Technology</h2>
+                <h3>Suzanna Wentzel</h3>
+                <button onclick="scrollToId('line-drawings')">Try It Out!</button>
+            </div>
+        </div>
+        <div class="canvas-container" id="line-drawings">
+            <div id="canvas-placeholder"></div>
+            <script src="art.js"></script>
+            <div class="form">
+                <h2>Play with parameters!</h2>
+                <label class="input-row">
+                    Number of lines:
+                    <div class="input-row">
+                        <input type="range" id="numLines" name="number of lines" min="2" max="1000" value="160" oninput="changeNumLines(this.value)" onchange="changeNumLines(this.value)"/>
+                        <p class="number-indication" id="txtNumLines">160</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    Line weight:
+                    <div class="input-row">
+                        <input type="range" id="lineWeight" name="line weight" min="1" max="10" value="1" oninput="changeLineWeight(this.value)" onchange="changeLineWeight(this.value)"/>
+                        <p class="number-indication" id="txtLineWeight">1</p>
+                    </div>
+                </label>
+
+                <p><b>Function 1</b></p>
+                <label class="input-row">
+                    Zoom:
+                    <div class="input-row">
+                        <input type="range" id="zoom" name="zoom" min="2" max="1000" value="250" oninput="changeZoom1(this.value)" onchange="changeZoom1(this.value)"/>
+                        <p class="number-indication" id="txtZoom1">250</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    R:
+                    <div class="input-row">
+                        <input type="range" id="R1" name="R1" min="0.1" max="3" step="0.05" value="1.0" oninput="changeR1(this.value)" onchange="changeR1(this.value)"/>
+                        <p class="number-indication" id="txtR1" >1.0</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    r:
+                    <div class="input-row">
+                        <input type="range" id="r1" name="r1" min="0.1" max="2" step="0.01" value="0.58" oninput="changer1(this.value)" onchange="changer1(this.value)"/>
+                        <p class="number-indication" id="txtr1" >0.58</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    d:
+                    <div class="input-row">
+                        <input type="range" id="d1" name="d1" min="0.01" max="3" step="0.01" value="0.29" oninput="changed1(this.value)" onchange="changed1(this.value)"/>
+                        <p class="number-indication" id="txtd1" >0.29</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    time interval:
+                    <div class="input-row">
+                        <input type="range" id="timeInterval1" name="timeInterval" min="0.001" max="0.3" step="0.001" value="0.05" oninput="changeTimefactor1(this.value)" onchange="changeTimefactor1(this.value)"/>
+                        <p class="number-indication" id="txtTimeFactor1" >0.05</p>
+                    </div>
+                </label>
+
+                <p><b>Function 2</b></p>
+                <label class="input-row">
+                    Zoom:
+                    <div class="input-row">
+                        <input type="range" id="zoom2" name="zoom2" min="2" max="1000" value="300" oninput="changeZoom2(this.value)" onchange="changeZoom2(this.value)"/>
+                        <p class="number-indication" id="txtZoom2">300</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    R:
+                    <div class="input-row">
+                        <input type="range" id="R2" name="R2" min="0.1" max="3" step="0.05" value="2.0" oninput="changeR2(this.value)" onchange="changeR2(this.value)"/>
+                        <p class="number-indication" id="txtR2">2.0</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    r:
+                    <div class="input-row">
+                        <input type="range" id="r2" name="r2" min="0.1" max="2" step="0.01" value="0.9" oninput="changer2(this.value)" onchange="changer2(this.value)"/>
+                        <p class="number-indication" id="txtr2" >0.9</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    d:
+                    <div class="input-row">
+                        <input type="range" id="d2" name="d2" min="0.01" max="3" step="0.01" value="0.45" oninput="changed2(this.value)" onchange="changed2(this.value)"/>
+                        <p class="number-indication" id="txtd2" >0.45</p>
+                    </div>
+                </label>
+                <label class="input-row">
+                    time interval:
+                    <div class="input-row">
+                        <input type="range" id="timeInterval2" name="timeInterval" min="0.001" max="0.3" step="0.001" value="0.015" oninput="changeTimefactor2(this.value)" onchange="changeTimefactor2(this.value)"/>
+                        <p class="number-indication" id="txtTimeFactor2" >0.015</p>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div id="how-it-works" class="canvas-container">
+            <div class="how-it-works">
+                <video width="711" height="400" controls>
+                    <source src="./public/explanation_art.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="info">
+                    <h2>How it Works</h2>
+                    <p>The basic idea is that lines are drawn between two functions, between two hypotrochoids. See the video for a quick introduction, or read the poster for more information!</p>
+                    <button class="download">Download Poster</button>
+                </div>
+            </div> 
+        </div>
+        <div class="footer">© Suzanna Wentzel, 2020</div>
+    </div>
 </body>
 
-<!-- <script src="main.js"></script> -->
+<script src="main.js"></script>
