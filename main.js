@@ -23,3 +23,23 @@ function scrollToId(id) {
         behavior: 'smooth'
     });
 }
+
+// === EXAMPLES ===============================================
+function setValues(inNumLines, inLineWeight, inZoom1, inR1, inr1, ind1, inTimeInterval1, inZoom2, inR2, inr2, ind2, inTimeInterval2) {
+    changeNumLines(inNumLines);
+    changeLineWeight(inLineWeight);
+    changeZoom1(inZoom1);
+    changeR1(inR1);
+    changer1(inr1);
+    changed1(ind1);
+    changeTimefactor1(inTimeInterval1);
+    changeZoom2(inZoom2);
+    changeR2(inR2);
+    changer2(inr2);
+    changed2(ind2);
+    changeTimefactor2(inTimeInterval2);
+
+    // scroll to the canvas
+    scrollToId('line-drawings');
+    
+}

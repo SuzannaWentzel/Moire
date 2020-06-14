@@ -7,14 +7,14 @@
 <body>
     <div id="navbar" class="sticky">
         <a href="javascript:scrollToId('line-drawings')">Line Drawings</a>
-        <a href="#">Examples</a>
+        <a href="javascript:scrollToId('examples')">Examples</a>
         <a href="javascript:scrollToId('how-it-works')">How it Works</a>
     </div>
     <div class="content">
         <div class="parallax banner">
             <div class="header">
                 <h1>Line Drawings</h1>
-                <h2>Course: Art, Mathematics and Technology</h2>
+                <h2>Art, Mathematics and Technology</h2>
                 <h3>Suzanna Wentzel</h3>
                 <button class="button" onclick="scrollToId('line-drawings')">Try It Out!</button>
             </div>
@@ -114,16 +114,53 @@
                 </label>
             </div>
         </div>
+        <div id="examples" class="example-container">
+            <h2>Examples</h2>
+            <div class="card-container">
+                <div id="card1" class="card">
+                    <video id="example1" width="300" height="168" autoplay loop muted>
+                        <source src="./public/example-1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Moving Blob</h3>
+                    <button class="button" onclick="setValues(1000, 1, 572, 1.0, 0.58, 0.29, 0.021, 300, 2.0, 0.9, 0.45, 0.015)">Try This One</button>
+                </div>
+                <div id="card2" class="card">
+                    <video id="example2" width="300" height="168" autoplay loop muted>
+                        <source src="./public/example-2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Moiré Flower</h3>
+                    <button class="button" onclick="setValues(1000, 1, 2, 0.1, 1.82, 2.16, 0.101, 1000, 0.1, 0.9, 0.45, 0.027)">Try This One</button>
+                </div>
+                <div id="card3" class="card">
+                    <video id="example3" width="300" height="168" autoplay loop muted>
+                        <source src="./public/example-3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Spiraling</h3>
+                    <button class="button" onclick="setValues(351, 1, 130, 0.2, 0.29, 2.16, 0.101, 448, 0.1, 0.33, 0.39, 0.058)">Try This One</button>
+                </div>
+                <div id="card4" class="card">
+                    <video id="example4" width="300" height="168" autoplay loop muted>
+                        <source src="./public/example-4.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Spiky Ball</h3>
+                    <button class="button" onclick="setValues(1000, 1, 46, 0.95, 1.82, 2.16, 0.151, 1000, 0.5, 0.9, 0.45, 0.027)">Try This One</button>
+                </div>
+            </div>
+        </div>
         <div id="how-it-works" class="canvas-container">
             <div class="how-it-works">
-                <video width="711" height="400" controls>
+                <video class="explanation-video" width="711" height="400" controls>
                     <source src="./public/explanation_art.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div class="info">
                     <h2>How it Works</h2>
                     <p>The basic idea is that lines are drawn between two functions, between two hypotrochoids. See the video for a quick introduction, or read the poster for more information!</p>
-                    <a class="download button" href="./public/Hypotrochoid line drawings_v3.pdf" download="Line drawings poster">Download Poster</a>
+                    <a class="download button" href="./public/Hypotrochoid line drawings_v5.pdf" download="Line drawings poster">Download Poster</a>
                 </div>
             </div> 
         </div>
